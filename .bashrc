@@ -6,4 +6,5 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+#PS1='[\u@\h \W]\$ '
+PS1='\[\033[1;37m\]\u@\h \W \[\033[00m\]'

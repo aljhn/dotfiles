@@ -56,6 +56,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+t exec --no-startup-id firefox
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+c exec --no-startup-id code
+bindsym $mod+b exec --no-startup-id thunderbird
 
 # change focus
 bindsym $mod+h focus left
@@ -197,3 +198,5 @@ exec --no-startup-id  setxkbmap -layout no
 # Compton
 exec --no-startup-id compton -b
 
+# Redshift
+exec --no-startup-id redshift -l 60:11
