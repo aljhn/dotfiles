@@ -40,7 +40,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec --no-startup-id st
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -55,8 +55,6 @@ bindsym $mod+Shift+q kill
 # Custom keybindings
 bindsym $mod+t exec --no-startup-id firefox
 bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod+c exec --no-startup-id code
-bindsym $mod+b exec --no-startup-id thunderbird
 
 # change focus
 bindsym $mod+h focus left
@@ -180,6 +178,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screenshot
+bindsym Print exec --no-startup-id maim -s ~/$(date +%s).png
+
 # Sound
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%
@@ -190,13 +191,16 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Keyboard layout
-exec --no-startup-id  setxkbmap -layout no
+exec --no-startup-id setxkbmap -layout no
 
 # Compton
 exec --no-startup-id compton -b
 
 # Redshift
 exec --no-startup-id redshift -l 60:11
+
+# Wallpaper
+exec --no-startup-id ~/.fehbg
