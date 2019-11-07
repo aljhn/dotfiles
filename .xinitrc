@@ -1,9 +1,12 @@
 #!/bin/sh
 
 
-#xrandr --setprovideroutputsource modesetting NVIDIA-0
-#xrandr --auto
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
 exec setxkbmap -option 'numpad:microsoft' &
 
+#exec /usr/bin/prime-offload &
+
 exec i3
+
