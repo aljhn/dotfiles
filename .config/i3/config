@@ -196,8 +196,8 @@ exec --no-startup-id ~/.config/polybar/launch.sh
 # Keyboard layout
 exec --no-startup-id setxkbmap -layout no
 
-# Compton
-exec --no-startup-id compton -b
+# Picom
+exec --no-startup-id picom -b
 
 # Redshift
 exec --no-startup-id redshift -l 60:11
