@@ -204,3 +204,6 @@ exec --no-startup-id redshift -l 60:11
 
 # Wallpaper
 exec --no-startup-id ~/.fehbg
+
+# Battery notifier
+exec --no-startup-id ~/LowBattery
