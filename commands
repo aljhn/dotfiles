@@ -1,0 +1,24 @@
+#Switch GPU
+1. Alias for optimus-manager --switch auto : switch
+2. Exit Xorg: mod+shift+e
+3. Run: sudo /usr/bin/prime-switch
+4. startx
+
+
+# Clear cache
+sudo paccache -r # Clear cache for uninstalled packages
+sudo pacman -Scc # Clear everything i cache/pacman
+
+
+# Remove unused packages
+sudo pacman -Rns $(pacman -Qtdq)
+
+
+# Disk sizes
+df -h
+
+
+# CTF
+TERM=xterm ssh login@ctf.cybertalent.no
+
+

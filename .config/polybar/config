@@ -5,7 +5,7 @@ height = 32
 radius = 0.0
 fixed-center = true
 
-background = #00000000
+background = #44000000
 foreground = #fff
 
 padding-left = 0
@@ -20,7 +20,8 @@ font-2 = FontAwesome5FreeSolid:size=11
 
 modules-left = i3
 modules-center = date
-modules-right = pulseaudio backlight battery wlan eth filesystem cpu memory temperature
+#modules-right = pulseaudio backlight battery wlan eth filesystem cpu memory temperature
+modules-right = wlan eth pulseaudio backlight battery
 
 tray-position = right
 tray-padding = 2
@@ -54,7 +55,7 @@ label-mode-background = #00000000
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = #444
+label-focused-background = #000
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -63,7 +64,8 @@ label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-background = ${self.label-focused-background}
+;label-visible-background = ${self.label-focused-background}
+label-visible-background = #444
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
