@@ -6,7 +6,7 @@ xrandr --auto
 
 exec setxkbmap -option 'numpad:microsoft' &
 
-#exec /usr/bin/prime-offload &
+exec /usr/bin/prime-offload &
 
 exec i3
 
