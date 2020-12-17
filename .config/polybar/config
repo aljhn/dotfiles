@@ -14,14 +14,16 @@ padding-right = 3
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = NotoSansMono:size=11
-font-1 = FontAwesome5FreeRegular:size=11
-font-2 = FontAwesome5FreeSolid:size=11
+#font-0 = NotoSansMono:size=12
+font-0 = SourceCodePro:size=12
+font-1 = FontAwesome5FreeRegular:size=12
+font-2 = FontAwesome5FreeSolid:size=12
 
 modules-left = i3
 modules-center = date
 #modules-right = pulseaudio backlight battery wlan eth filesystem cpu memory temperature
 modules-right = wlan eth pulseaudio backlight battery
+
 
 tray-position = right
 tray-padding = 2

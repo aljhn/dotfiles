@@ -54,7 +54,8 @@ bindsym $mod+Shift+q kill
 
 # Custom keybindings
 bindsym $mod+t exec --no-startup-id firefox
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -show drun -icon-theme "Papirus" -show-icons
+bindsym $mod+e exec --no-startup-id pcmanfm
 
 # change focus
 bindsym $mod+h focus left
@@ -90,9 +91,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -204,7 +205,7 @@ exec --no-startup-id setxkbmap -layout no
 exec --no-startup-id picom -b
 
 # Redshift
-exec --no-startup-id redshift -l 60:11
+#exec --no-startup-id redshift -l 60:11
 
 # Wallpaper
 exec --no-startup-id ~/.fehbg
