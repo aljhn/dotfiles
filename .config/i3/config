@@ -54,7 +54,7 @@ bindsym $mod+Shift+q kill
 
 # Custom keybindings
 bindsym $mod+t exec --no-startup-id firefox
-bindsym $mod+d exec --no-startup-id rofi -show drun -icon-theme "Papirus" -show-icons
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme Arc-Dark -icon-theme "Papirus" -show-icons
 bindsym $mod+e exec --no-startup-id pcmanfm
 
 # change focus
