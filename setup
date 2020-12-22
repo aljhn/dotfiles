@@ -1,0 +1,33 @@
+
+base base-devel linux linux-firmware
+networkmanager network-manager-applet wireless_tools reflector dialog dhcp rsync
+refind ntfs-3g intel-ucode
+xorg xorg-xinit xf86-video-intel xf86-video-vesa
+i3-gaps picom rofi feh polybar otf-font-awesome
+noto-fonts noto-fonts-cjk noto-fonts-emoji
+alacritty xcwd-git neofetch vim ranger w3m
+nvidia nvidia-utils mesa-demos optimus-manager bbswitch
+man-pages mandb texinfo
+p7zip
+light
+pulseaudio pulseaudio-alsa pavucontrol
+tlp thermald
+python python-pip
+redshift
+tlp
+thermald
+visual-studio-code-bin
+arc-gtk-theme papirus-icon-theme
+
+optimus-manager: husk å bytte ut intel med integrated i config-filen
+
+arc-dark gtk[2/3]
+papirus-dark gtk[2/3]
+breeze-obsidian cursor
+lxappearance to change with GUI
+
+Disable bluetooth:
+sudo systemctl enable rfkill-block@bluetooth.service
+
+Create symlink to the destination /windows/Dropbox from the created file Dropbox (Maestral)
+ln -s /windows/Dropbox "Dropbox (Maestral)"
