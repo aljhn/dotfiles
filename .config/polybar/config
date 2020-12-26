@@ -22,7 +22,7 @@ font-2 = FontAwesome5FreeSolid:size=12
 modules-left = i3
 modules-center = date
 #modules-right = pulseaudio backlight battery wlan eth filesystem cpu memory temperature
-modules-right = wlan eth pulseaudio backlight battery
+modules-right = wlan eth pulseaudio backlight battery temperature
 
 
 tray-position = right

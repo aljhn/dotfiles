@@ -23,7 +23,6 @@
 
     // Functionality
     "editor.acceptSuggestionOnEnter": "off",
-    "explorer.sortOrder": "modified",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
 
@@ -38,4 +37,5 @@
     "workbench.colorCustomizations": {
         "[Material Theme High Contrast]": {}
     },
+    "code-runner.runInTerminal": true,
 }
