@@ -2,7 +2,7 @@
 base base-devel linux linux-firmware
 networkmanager network-manager-applet wireless_tools reflector dialog dhcp rsync
 refind ntfs-3g intel-ucode
-xorg xorg-xinit xf86-video-intel xf86-video-vesa
+xorg xorg-xinit xf86-video-vesa (ikke installer xf86-video-intel)
 i3-gaps picom rofi feh polybar otf-font-awesome
 noto-fonts noto-fonts-cjk noto-fonts-emoji
 alacritty xcwd-git neofetch vim ranger w3m

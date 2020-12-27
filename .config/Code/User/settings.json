@@ -38,4 +38,5 @@
         "[Material Theme High Contrast]": {}
     },
     "code-runner.runInTerminal": true,
+    "workbench.startupEditor": "newUntitledFile",
 }
