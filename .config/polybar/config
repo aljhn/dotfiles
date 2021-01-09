@@ -95,12 +95,17 @@ interval = 2
 label =  %percentage_used%%
 
 
-[module/wlan]
+[module/wlan_old]
 type = internal/network
 interface = wlp0s20f3
 interval = 3.0
 label-connected =  %essid%
 
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+label-connected =  %local_ip%
 
 [module/eth]
 type = internal/network
