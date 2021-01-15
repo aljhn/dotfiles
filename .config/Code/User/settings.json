@@ -27,13 +27,15 @@
     "files.insertFinalNewline": true,
 
     // Other
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": [],
     "python.showStartPage": false,
     "code-runner.runInTerminal": true,
     "workbench.startupEditor": "newUntitledFile",
+    "bracket-pair-colorizer-2.colors": [
+
+        "Orchid",
+        "LightSkyBlue",
+        "Gold",
+        "Salmon"
+    ],
 }
