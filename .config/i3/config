@@ -56,6 +56,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+t exec --no-startup-id firefox
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme Arc-Dark -icon-theme "Papirus" -show-icons
 bindsym $mod+e exec --no-startup-id pcmanfm
+bindsym $mod+c exec --no-startup-id code
 
 # change focus
 bindsym $mod+h focus left

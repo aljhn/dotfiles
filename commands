@@ -22,3 +22,6 @@ df -h
 TERM=xterm ssh login@ctf.cybertalent.no
 
 
+# vurder å endre modeset til yes i optimus-manager.conf på nvidia driveren
+
+sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist

@@ -27,7 +27,9 @@
     "files.insertFinalNewline": true,
 
     // Other
-    "workbench.editorAssociations": [],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
     "python.showStartPage": false,
     "code-runner.runInTerminal": true,
     "workbench.startupEditor": "newUntitledFile",
@@ -38,4 +40,8 @@
         "Gold",
         "Salmon"
     ],
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.linkedEditing": true,
+    "python.languageServer": "Default"
 }
