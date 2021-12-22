@@ -6,12 +6,22 @@
 #
 
 
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 2
 
-gaps inner 5
+gaps inner 10
 gaps outer 5
 
 smart_borders on
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #aaaaaa #aaaaaa #ffffff #aaaaaa   #aaaaaa
+client.focused_inactive #333333 #333333 #ffffff #333333   #333333
+client.unfocused        #333333 #333333 #ffffff #333333   #333333
+client.urgent           #aaaaaa #aaaaaa #ffffff #aaaaaa   #aaaaaa
+client.placeholder      #333333 #333333 #ffffff #333333   #333333
+
+client.background       #ffffff
 
 
 # i3 config file (v4)
@@ -53,7 +63,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Custom keybindings
-bindsym $mod+t exec --no-startup-id firefox
+bindsym $mod+w exec --no-startup-id firefox
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme Arc-Dark -icon-theme "Papirus" -show-icons
 bindsym $mod+e exec --no-startup-id pcmanfm
 bindsym $mod+c exec --no-startup-id code
@@ -210,6 +220,9 @@ exec --no-startup-id picom -b
 
 # Wallpaper
 exec --no-startup-id ~/.fehbg
+
+# Notifications
+exec --no-startup-id /usr/bin/dunst
 
 # Battery notifier
 exec --no-startup-id ~/LowBattery

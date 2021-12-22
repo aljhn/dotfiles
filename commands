@@ -8,6 +8,7 @@
 # Clear cache
 sudo paccache -r # Clear cache for uninstalled packages
 sudo pacman -Sc # Clear everything i cache/pacman
+yay -Sc
 
 
 # Remove unused packages

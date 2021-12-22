@@ -5,7 +5,7 @@ height = 32
 radius = 0.0
 fixed-center = true
 
-background = #44000000
+background = #77000000
 foreground = #fff
 
 padding-left = 0
@@ -19,10 +19,10 @@ font-0 = SourceCodePro:size=12
 font-1 = FontAwesome5FreeRegular:size=12
 font-2 = FontAwesome5FreeSolid:size=12
 
-modules-left = i3
+modules-left = i3 bspwm
 modules-center = date
 #modules-right = pulseaudio backlight battery wlan eth filesystem cpu memory temperature
-modules-right = wlan eth pulseaudio backlight battery temperature
+modules-right = wlan eth pulseaudio backlight battery
 
 
 tray-position = right
@@ -31,8 +31,8 @@ tray-padding = 2
 ;wm-restack = i3
 ;override-redirect = true
 
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
+#scroll-up = i3wm-wsnext
+#scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 ;cursor-scroll = ns-resize
@@ -43,6 +43,34 @@ type = internal/fs
 interval = 25
 mount-0 = /
 label-mounted =  %percentage_used%%
+
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = false
+fuzzy-match = true
+
+label-focused = %index%
+label-focused-background = #000
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%
+label-urgent-background = #ff0000
+label-urgent-padding = 2
+
+;label-empty = %index%
+label-empty = 
+label-empty-foreground = #00ffffff
+;label-empty-padding = 2
+label-empty-padding = 0
 
 
 [module/i3]
@@ -68,7 +96,7 @@ label-unfocused-padding = 2
 label-visible = %index%
 ;label-visible-background = ${self.label-focused-background}
 label-visible-background = #444
-label-visible-padding = ${self.label-focused-padding}
+;label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
