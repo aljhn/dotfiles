@@ -5,7 +5,7 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 
 # Fix Num Lock
-exec setxkbmap -option 'numpad:microsoft' &
+#exec setxkbmap -option 'numpad:microsoft' &
 
 # Cursor fix
 xsetroot -cursor_name left_ptr
