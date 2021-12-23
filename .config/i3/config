@@ -221,8 +221,11 @@ exec --no-startup-id picom -b
 # Wallpaper
 exec --no-startup-id ~/.fehbg
 
+# Networks
+exec --no-startup-id nm-applet
+
 # Notifications
 exec --no-startup-id /usr/bin/dunst
 
 # Battery notifier
-exec --no-startup-id ~/LowBattery
+batsignal -w 20 -c 5 -d 2 -f 98 -D poweroff
