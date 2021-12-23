@@ -11,7 +11,7 @@ xrandr --auto
 xsetroot -cursor_name left_ptr
 
 # Optimus-manager: run prime-offload as a non-root after starting xorg
-exec /usr/bin/prime-offload &
+#exec /usr/bin/prime-offload &
 
 #exec i3
 exec bspwm

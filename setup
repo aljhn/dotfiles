@@ -18,16 +18,20 @@ tlp
 thermald
 visual-studio-code-bin
 arc-gtk-theme papirus-icon-theme
-
-optimus-manager: husk å bytte ut intel med integrated i config-filen
+thunderbird
 
 arc-dark gtk[2/3]
 papirus-dark gtk[2/3]
 breeze-obsidian cursor
 lxappearance to change with GUI
+install kvantum-qt5 and select arc-dark, then add QT_STYLE_OVERRIDE=kvantum to /etc/environment
 
 Disable bluetooth:
 sudo systemctl enable rfkill-block@bluetooth.service
 
 Create symlink to the destination /windows/Dropbox from the created file Dropbox (Maestral)
 ln -s /windows/Dropbox "Dropbox (Maestral)"
+
+lightdm + lightdm-mini-greeter + light-locker
+dunst + batsignal
+

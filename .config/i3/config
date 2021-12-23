@@ -206,6 +206,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
+# Lockscreen
+bindsym $mod+Shift+l exec --no-startup-id light-locker-command -l
+
 # Polybar
 exec --no-startup-id ~/.config/polybar/launch.sh
 
@@ -228,4 +231,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id /usr/bin/dunst
 
 # Battery notifier
-exec --no-startup-id batsignal -w 20 -c 5 -d 2 -f 98 -D poweroff
+exec --no-startup-id batsignal -w 20 -c 5
+
+# Lockscreen
+exec --no-startup-id light-locker
+
+# Optimus
+exec --no-startup-id optimus-manager-qt
