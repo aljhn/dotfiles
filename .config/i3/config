@@ -238,3 +238,6 @@ exec --no-startup-id light-locker
 
 # Optimus
 exec --no-startup-id optimus-manager-qt
+
+# Redshift
+exec --no-startup-id redshift-gtk -l 60:10
