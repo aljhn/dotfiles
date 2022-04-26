@@ -4,7 +4,7 @@ networkmanager network-manager-applet wireless_tools reflector dialog dhcp rsync
 refind ntfs-3g intel-ucode
 xorg xorg-xinit xf86-video-vesa (ikke installer xf86-video-intel)
 i3-gaps picom rofi feh polybar otf-font-awesome
-noto-fonts noto-fonts-cjk noto-fonts-emoji
+noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack
 alacritty xcwd-git neofetch vim ranger ueberzug
 nvidia nvidia-utils mesa-demos optimus-manager bbswitch
 man-pages mandb texinfo
@@ -16,7 +16,7 @@ python python-pip python-numpy python-matplotlib tk
 redshift
 tlp
 thermald
-visual-studio-code-bin
+vscodium-bin
 arc-gtk-theme papirus-icon-theme
 thunderbird
 
