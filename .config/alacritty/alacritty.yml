@@ -68,6 +68,8 @@ window:
   # Window class (Linux only):
   #class: Alacritty
 
+  opacity: 0.8
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -108,7 +110,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Source Code Pro
+    #family: Source Code Pro
+    family: Hack
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -278,7 +281,7 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+#background_opacity: 0.8
 
 # Mouse bindings
 #

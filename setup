@@ -5,7 +5,7 @@ refind ntfs-3g intel-ucode
 xorg xorg-xinit xf86-video-vesa (ikke installer xf86-video-intel)
 i3-gaps picom rofi feh polybar otf-font-awesome
 noto-fonts noto-fonts-cjk noto-fonts-emoji
-alacritty xcwd-git neofetch vim ranger w3m
+alacritty xcwd-git neofetch vim ranger ueberzug
 nvidia nvidia-utils mesa-demos optimus-manager bbswitch
 man-pages mandb texinfo
 p7zip
