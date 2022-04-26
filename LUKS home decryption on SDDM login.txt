@@ -1,0 +1,9 @@
+1. install pam_mount
+2. Open /etc/security/pam_mount.conf.xml and add the line:
+    <volume user="aj" fstype="crypt" path="/dev/disk/by-uuid/41db6a32-48d3-45eb-a2b3-40a6d3e18f69" mountpoint="/home" options="noatime,exec,fsck,nodev,nosuid" />
+add the line before the <mkmountpoint enable="1" remove="true" /> tag
+3. add lines to /etc/pam.d/system-login (check https://wiki.archlinux.org/title/Pam_mount)
+4. add the line to /etc/pam.d/sddm:
+    session         optional        pam_cryptpass.so
+after the system-login line
+5. Comment out the partition in /etc/fstab and /etc/crypttab (requires sudo)
