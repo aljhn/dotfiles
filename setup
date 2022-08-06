@@ -19,6 +19,8 @@ thermald
 vscodium-bin
 arc-gtk-theme papirus-icon-theme
 thunderbird
+helix
+fish exa zoxide
 
 arc-dark gtk[2/3]
 papirus-dark gtk[2/3]
