@@ -10,3 +10,5 @@ alias sps="sudo pacman -Syu"
 alias hx=helix
 
 zoxide init fish | source
+
+fish_add_path ~/.local/bin
