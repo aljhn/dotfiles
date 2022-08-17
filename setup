@@ -1,39 +1,27 @@
-
 base base-devel linux linux-firmware
-networkmanager network-manager-applet wireless_tools reflector dialog dhcp rsync
+networkmanager network-manager-applet 
+paru reflector
 refind ntfs-3g intel-ucode
-xorg xorg-xinit xf86-video-vesa (ikke installer xf86-video-intel)
-i3-gaps picom rofi feh polybar otf-font-awesome
-noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack
+xorg mesa mesa-utils mesa-demos nvidia nvidia-utils envycontrol
+bspwm sxhkd picom rofi feh polybar
+noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-hack
 alacritty xcwd-git neofetch vim ranger ueberzug
-nvidia nvidia-utils mesa-demos optimus-manager bbswitch
-man-pages mandb texinfo
-p7zip
-light
+light redshift
 pulseaudio pulseaudio-alsa pavucontrol
 tlp thermald
 python python-pip python-numpy python-matplotlib tk
-redshift
-tlp
-thermald
-vscodium-bin
-arc-gtk-theme papirus-icon-theme
-thunderbird
+arc-gtk-theme papirus-icon-theme lxappearance kvantum
+lightdm + lightdm-mini-greeter + light-locker
+dunst + batsignal
+thunderbird p7zip
 helix xclip
 fish exa zoxide
 
 arc-dark gtk[2/3]
 papirus-dark gtk[2/3]
 breeze-obsidian cursor
-lxappearance to change with GUI
-install kvantum-qt5 and select arc-dark, then add QT_STYLE_OVERRIDE=kvantum to /etc/environment
-
-Disable bluetooth:
-sudo systemctl enable rfkill-block@bluetooth.service
+lxappearance: change with GUI
+select arc-dark, then add QT_STYLE_OVERRIDE=kvantum to /etc/environment
 
 Create symlink to the destination /windows/Dropbox from the created file Dropbox (Maestral)
 ln -s /windows/Dropbox "Dropbox (Maestral)"
-
-lightdm + lightdm-mini-greeter + light-locker
-dunst + batsignal
-

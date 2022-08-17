@@ -1,14 +1,6 @@
-#Switch GPU
-1. Alias for optimus-manager --switch auto : switch
-2. Exit Xorg: mod+shift+e
-3. Run: sudo /usr/bin/prime-switch
-4. startx
-
-
 # Clear cache
-sudo paccache -r # Clear cache for uninstalled packages
-sudo pacman -Sc # Clear everything i cache/pacman
-yay -Sc
+sudo pacman -Sc
+paru -Sc
 
 
 # Remove unused packages
@@ -19,10 +11,5 @@ sudo pacman -Rns $(pacman -Qtdq)
 df -h
 
 
-# CTF
-TERM=xterm ssh login@ctf.cybertalent.no
-
-
-# vurder å endre modeset til yes i optimus-manager.conf på nvidia driveren
-
+# Update mirrors
 sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
