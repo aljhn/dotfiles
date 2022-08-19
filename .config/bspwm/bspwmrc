@@ -17,8 +17,6 @@ bspc config focused_border_color "#aaaaaa"
 bspc config normal_border_color "#333333"
 bspc config active_border_color "#333333"
 
-setxkbmap -layout no &
-xsetroot -cursor_name left_ptr &
 picom -b &
 ~/.config/polybar/launch.sh &
 ~/.fehbg &

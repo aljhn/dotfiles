@@ -1,6 +1,6 @@
 base base-devel linux linux-firmware
 networkmanager network-manager-applet 
-paru reflector
+paru bat reflector
 refind ntfs-3g intel-ucode
 xorg mesa mesa-utils mesa-demos nvidia nvidia-utils envycontrol
 bspwm sxhkd picom rofi feh polybar
