@@ -1,5 +1,5 @@
 # Arch Config Files
 
 <div align="center">
- <img src="Rice.png" width="600">
+ <img src="Rice.png">
 </div>
