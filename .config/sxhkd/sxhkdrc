@@ -34,9 +34,6 @@ super + w
 super + e
 	pcmanfm
 
-super + c
-	codium
-
 ctrl + space
 	dunstctl close-all
 

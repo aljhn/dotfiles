@@ -10,6 +10,16 @@ sudo pacman -Rns $(pacman -Qtdq)
 # Disk sizes
 df -h
 
+# Estimate directory disk size
+du -sh DIRECTORY
+
+# Estimate all directory sizes
+du -sh *
+
 
 # Update mirrors
 sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
+
+# Create zip file
+7z a -tzip archive.zip files

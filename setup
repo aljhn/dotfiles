@@ -3,9 +3,9 @@ networkmanager network-manager-applet
 paru bat reflector
 refind ntfs-3g intel-ucode
 xorg mesa mesa-utils mesa-demos nvidia nvidia-utils envycontrol
-bspwm sxhkd picom rofi feh polybar
+bspwm sxhkd picom rofi feh polybar sxiv
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-hack
-alacritty xcwd-git neofetch vim ranger ueberzug
+alacritty xcwd-git neofetch vim lf pcmanfm
 light redshift
 pulseaudio pulseaudio-alsa pavucontrol
 tlp thermald
@@ -25,3 +25,7 @@ select arc-dark, then add QT_STYLE_OVERRIDE=kvantum to /etc/environment
 
 Create symlink to the destination /windows/Dropbox from the created file Dropbox (Maestral)
 ln -s /windows/Dropbox "Dropbox (Maestral)"
+
+Limit journal log space: 
+sudo vim /etc/systemd/journald.conf
+SystemMaxUse=50M

@@ -1,11 +1,9 @@
 {
-    // Ricing
-    "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.startupEditor": "none",
     "workbench.iconTheme": "material-icon-theme",
     "explorer.confirmDelete": false,
     "workbench.editor.enablePreview": false,
-    "editor.fontFamily": "Hack",
+    "editor.fontFamily": "Hack Nerd Font",
     "editor.smoothScrolling": false,
     "editor.minimap.showSlider": "always",
 
@@ -19,4 +17,5 @@
     "editor.acceptSuggestionOnEnter": "off",
     //"files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
+    "workbench.colorTheme": "One Dark Pro",
 }
