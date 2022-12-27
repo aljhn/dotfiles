@@ -13,5 +13,4 @@ set nowrap
 set scrolloff=8
 set backspace=indent,eol,start
 
-colorscheme slate
 syntax on

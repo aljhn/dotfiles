@@ -5,7 +5,7 @@ refind ntfs-3g intel-ucode
 xorg mesa mesa-utils mesa-demos nvidia nvidia-utils envycontrol
 bspwm sxhkd picom rofi feh polybar sxiv
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-hack
-alacritty xcwd-git neofetch vim lf pcmanfm
+alacritty xcwd-git neofetch neovim lf pcmanfm
 light redshift
 pulseaudio pulseaudio-alsa pavucontrol
 tlp thermald
@@ -16,6 +16,7 @@ dunst + batsignal
 thunderbird p7zip
 helix xclip
 fish exa zoxide
+fd ripgrep
 
 arc-dark gtk[2/3]
 papirus-dark gtk[2/3]

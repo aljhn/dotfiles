@@ -19,6 +19,7 @@ du -sh *
 
 # Update mirrors
 sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose -c DK -c NO -c SE --protocol https --sort rate --latest 10 --download-timeout 5
 
 
 # Create zip file
