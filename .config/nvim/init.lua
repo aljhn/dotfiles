@@ -39,6 +39,8 @@ vim.opt.updatetime = 50
 
 vim.opt.signcolumn = "yes"
 
+vim.opt.clipboard = "unnamedplus"
+
 local plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -69,6 +71,18 @@ local plugins = {
                 char = "┊",
                 show_trailing_blankline_indent = true
             }
+        end
+    },
+    {
+        "steelsojka/pears.nvim",
+        config = function()
+            require("pears").setup()
+        end
+    },
+    {
+        "karb94/neoscroll.nvim",
+        config = function()
+            require("neoscroll").setup()
         end
     },
     "nvim-tree/nvim-web-devicons",
@@ -124,6 +138,7 @@ local plugins = {
     },
     {
         "akinsho/bufferline.nvim",
+        enabled = false,
         version = "v3.*",
         dependencies = {
             "nvim-tree/nvim-web-devicons"
@@ -137,6 +152,7 @@ local plugins = {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
+        enabled = false,
         branch = "v2.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -162,6 +178,7 @@ local plugins = {
 	{
 		"navarasu/onedark.nvim",
 		lazy = true,
+        priority = 1000,
 		config = function()
 			require("onedark").setup {
 				style = "dark",
@@ -172,6 +189,7 @@ local plugins = {
     {
         "folke/tokyonight.nvim",
         lazy = true,
+        priority = 1000,
         config = function()
             require("tokyonight").setup {
                 style = "storm",
@@ -179,9 +197,28 @@ local plugins = {
             }
         end
     },
+    {
+        "rebelot/kanagawa.nvim",
+        lazy = true,
+        priority = 1000,
+        config = function()
+            require("kanagawa").setup {
+                transparent = true
+        }
+        end
+    },
+    {
+        "sainnhe/sonokai",
+        lazy = true,
+        priority = 1000,
+        config = function()
+            vim.g.sonokai_style = "default"
+            vim.g.sonokai_transparent_background = 1
+        end
+    }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
 
 
-vim.cmd[[colorscheme onedark]]
+vim.cmd[[colorscheme kanagawa]]

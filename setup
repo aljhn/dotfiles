@@ -4,11 +4,11 @@ paru bat reflector
 refind ntfs-3g intel-ucode
 xorg mesa mesa-utils mesa-demos nvidia nvidia-utils envycontrol
 bspwm sxhkd picom rofi feh polybar sxiv
-noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-hack
+noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hack-nerd
 alacritty xcwd-git neofetch neovim lf pcmanfm
 light redshift
 pulseaudio pulseaudio-alsa pavucontrol
-tlp thermald
+tlp thermald powertop
 python python-pip python-numpy python-matplotlib tk
 arc-gtk-theme papirus-icon-theme lxappearance kvantum
 lightdm + lightdm-mini-greeter + light-locker
