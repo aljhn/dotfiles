@@ -32,7 +32,7 @@ super + w
 	firefox
 
 super + e
-	pcmanfm
+	thunar
 
 ctrl + space
 	dunstctl close-all

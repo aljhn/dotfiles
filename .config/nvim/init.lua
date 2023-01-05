@@ -74,9 +74,10 @@ local plugins = {
         end
     },
     {
-        "steelsojka/pears.nvim",
+        "windwp/nvim-autopairs",
+        enabled = false,
         config = function()
-            require("pears").setup()
+            require("nvim-autopairs").setup()
         end
     },
     {
@@ -176,16 +177,16 @@ local plugins = {
         end
     },
 	{
-		"navarasu/onedark.nvim",
-		lazy = true,
+        "navarasu/onedark.nvim",
+        lazy = true,
         priority = 1000,
-		config = function()
-			require("onedark").setup {
-				style = "dark",
-				transparent = true
-			}
-		end
-	},
+        config = function()
+            require("onedark").setup {
+                style = "dark",
+                transparent = true
+            }
+        end
+    },
     {
         "folke/tokyonight.nvim",
         lazy = true,
