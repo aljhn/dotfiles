@@ -1,18 +1,19 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  })
-end vim.opt.runtimepath:prepend(lazypath)
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        "https://github.com/folke/lazy.nvim.git",
+        lazypath,
+    })
+end
+vim.opt.runtimepath:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.keymap.set({"n", "v"}, '<Space>', '<Nop>', {silent = true})
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -43,55 +44,122 @@ vim.opt.clipboard = "unnamedplus"
 
 local plugins = {
     {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+        config = function()
+            require("mason").setup()
+        end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = { "lua_ls", "pyright" },
+            })
+        end,
+    },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("lspconfig").lua_ls.setup({
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                    },
+                },
+            })
+            require("lspconfig").pyright.setup({})
+        end,
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.diagnostics.ruff,
+                    null_ls.builtins.formatting.black,
+                },
+                on_attach = function(client, bufnr)
+                    if client.supports_method("textDocument/formatting") then
+                        vim.api.nvim_clear_autocmds({
+                            group = augroup,
+                            buffer = bufnr,
+                        })
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            group = augroup,
+                            buffer = bufnr,
+                            callback = function()
+                                vim.lsp.buf.format({ async = false })
+                            end,
+                        })
+                    end
+                end,
+            })
+        end,
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("mason-null-ls").setup({
+                ensure_installed = { "stylua", "ruff", "black" },
+            })
+        end,
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-			require("nvim-treesitter.configs").setup {
-                ensure_installed = {"c", "cpp", "lua", "python", "javascript"},
-				highlight = {
-					enable = true,
-                    additional_vim_regex_highlighting = false
-				},
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = { "c", "cpp", "lua", "python", "javascript" },
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
                 indent = {
-                    enable = true
-                }
-			}
-		end
+                    enable = true,
+                },
+            })
+        end,
     },
-	{
+    {
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup()
-        end
+        end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("indent_blankline").setup {
+            require("indent_blankline").setup({
                 char = "┊",
-                show_trailing_blankline_indent = true
-            }
-        end
+                show_trailing_blankline_indent = true,
+            })
+        end,
     },
     {
         "windwp/nvim-autopairs",
         enabled = false,
         config = function()
             require("nvim-autopairs").setup()
-        end
+        end,
     },
     {
-        "karb94/neoscroll.nvim",
-        config = function()
-            require("neoscroll").setup()
-        end
+        "nvim-tree/nvim-web-devicons",
     },
-    "nvim-tree/nvim-web-devicons",
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
-            "nvim-lua/plenary.nvim"
+            "nvim-lua/plenary.nvim",
         },
         config = function()
             local builtin = require("telescope.builtin")
@@ -99,127 +167,46 @@ local plugins = {
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
             vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
             vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-        end
-    },
-    {
-       "VonHeikemen/lsp-zero.nvim",
-        dependencies = {
-            -- LSP Support
-           "neovim/nvim-lspconfig",
-           "williamboman/mason.nvim",
-           "williamboman/mason-lspconfig.nvim",
-           -- Autocompletion
-           "hrsh7th/nvim-cmp",
-           "hrsh7th/cmp-buffer",
-           "hrsh7th/cmp-path",
-           "saadparwaiz1/cmp_luasnip",
-           "hrsh7th/cmp-nvim-lsp",
-           "hrsh7th/cmp-nvim-lua",
-           -- Snippets
-           "L3MON4D3/LuaSnip",
-           "rafamadriz/friendly-snippets"
-        },
-        config = function()
-            local lsp = require("lsp-zero")
-            lsp.preset("recommended")
-            lsp.nvim_workspace()
-            lsp.setup()
-        end
+        end,
     },
     {
         "nvim-lualine/lualine.nvim",
         config = function()
-            require("lualine").setup {
+            require("lualine").setup({
                 options = {
                     component_separators = "|",
-                    section_separators = ""
-                }
-            }
-        end
-    },
-    {
-        "akinsho/bufferline.nvim",
-        enabled = false,
-        version = "v3.*",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
-        },
-        config = function()
-            require("bufferline").setup()
-            vim.keymap.set("n", "<leader>q", ":bd<CR>")
-            vim.keymap.set("n", "<leader>h", ":BufferLineCyclePrev<CR>")
-            vim.keymap.set("n", "<leader>l", ":BufferLineCycleNext<CR>")
-        end
-    },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        enabled = false,
-        branch = "v2.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            vim.cmd([[let g:neo_tree_remove_legacy_commands = 1]])
-            vim.keymap.set("n", "<leader>e", ":Neotree<CR>")
-            require("neo-tree").setup {
-                window = {
-                    width = 30
-                }
-            }
-        end
+                    section_separators = "",
+                },
+            })
+        end,
     },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
-        end
-    },
-	{
-        "navarasu/onedark.nvim",
-        lazy = true,
-        priority = 1000,
-        config = function()
-            require("onedark").setup {
-                style = "dark",
-                transparent = true
-            }
-        end
+        end,
     },
     {
-        "folke/tokyonight.nvim",
-        lazy = true,
+        "navarasu/onedark.nvim",
         priority = 1000,
         config = function()
-            require("tokyonight").setup {
-                style = "storm",
-                transparent = true
-            }
-        end
+            require("onedark").setup({
+                style = "dark",
+                transparent = true,
+            })
+        end,
     },
     {
         "rebelot/kanagawa.nvim",
-        lazy = true,
         priority = 1000,
         config = function()
-            require("kanagawa").setup {
-                transparent = true
-        }
-        end
+            require("kanagawa").setup({
+                transparent = true,
+            })
+        end,
     },
-    {
-        "sainnhe/sonokai",
-        lazy = true,
-        priority = 1000,
-        config = function()
-            vim.g.sonokai_style = "default"
-            vim.g.sonokai_transparent_background = 1
-        end
-    }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
 
-
-vim.cmd[[colorscheme kanagawa]]
+vim.cmd([[colorscheme kanagawa]])
