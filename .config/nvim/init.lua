@@ -42,8 +42,6 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.clipboard = "unnamedplus"
 
-vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-
 local plugins = {
     {
         "williamboman/mason.nvim",
@@ -74,16 +72,53 @@ local plugins = {
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
+    "saadparwaiz1/cmp_luasnip",
     {
         "hrsh7th/nvim-cmp",
         config = function()
             local cmp = require("cmp")
+            local luasnip = require("luasnip")
+            local has_words_before = function()
+                unpack = unpack or table.unpack
+                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                return col ~= 0
+                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+            end
             cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
+                },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "buffer" },
                     { name = "path" },
                     { name = "luasnip" },
+                },
+                mapping = {
+                    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        elseif has_words_before() then
+                            cmp.complete()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
                 },
             })
             cmp.setup.cmdline("/", {
@@ -111,7 +146,8 @@ local plugins = {
         "neovim/nvim-lspconfig",
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("lspconfig").lua_ls.setup({
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup({
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -125,8 +161,26 @@ local plugins = {
                 },
                 capabilities = capabilities,
             })
-            require("lspconfig").pyright.setup({
+            lspconfig.pyright.setup({
                 capabilities = capabilities,
+            })
+            vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+                callback = function(ev)
+                    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+                    local opts = { buffer = ev.buf }
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                    vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+                    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                    vim.keymap.set({ "n", "v" }, "<F4>", vim.lsp.buf.code_action, opts)
+                end,
             })
         end,
     },
