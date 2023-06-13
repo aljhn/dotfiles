@@ -36,11 +36,13 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 vim.opt.signcolumn = "yes"
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 local plugins = {
     {
@@ -58,9 +60,57 @@ local plugins = {
             })
         end,
     },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    {
+        "L3MON4D3/LuaSnip",
+        build = "make install_jsregexp",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+        },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        config = function()
+            local cmp = require("cmp")
+            cmp.setup({
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "buffer" },
+                    { name = "path" },
+                    { name = "luasnip" },
+                },
+            })
+            cmp.setup.cmdline("/", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = "buffer" },
+                },
+            })
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = "path" },
+                }, {
+                    {
+                        name = "cmdline",
+                        option = {
+                            ignore_cmds = { "Man", "!" },
+                        },
+                    },
+                }),
+            })
+        end,
+    },
     {
         "neovim/nvim-lspconfig",
         config = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
             require("lspconfig").lua_ls.setup({
                 settings = {
                     Lua = {
@@ -69,11 +119,15 @@ local plugins = {
                         },
                         workspace = {
                             library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
                         },
                     },
                 },
+                capabilities = capabilities,
             })
-            require("lspconfig").pyright.setup({})
+            require("lspconfig").pyright.setup({
+                capabilities = capabilities,
+            })
         end,
     },
     {
