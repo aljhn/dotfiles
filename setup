@@ -4,7 +4,7 @@ paru bat reflector
 refind ntfs-3g intel-ucode
 xorg mesa mesa-utils mesa-demos nvidia nvidia-utils envycontrol
 bspwm sxhkd picom rofi feh polybar sxiv
-hyprland-nvidia xdg-desktop-portal-hyprland wireplumber wl-clipboard waybar swaybg swaylock swayidle hyprshot
+hyprland-nvidia xdg-desktop-portal-hyprland wireplumber wl-clipboard waybar swaybg swaylock swayidle hyprshot gammastep udiskie
 nwg-look-bin qt5ct qt6ct qt5-wayland qt6-wayland polkit-kde-agent
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hack-nerd
 alacritty xcwd-git neofetch neovim lf
