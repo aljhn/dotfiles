@@ -99,7 +99,7 @@ local plugins = {
 					{ name = "luasnip" },
 				},
 				mapping = {
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
@@ -299,6 +299,7 @@ local plugins = {
 	{
 		"navarasu/onedark.nvim",
 		lazy = false,
+		enabled = false,
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
@@ -314,6 +315,19 @@ local plugins = {
 		config = function()
 			require("kanagawa").setup({
 				transparent = true,
+			})
+		end,
+	},
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		enabled = false,
+		priority = 1000,
+		config = function()
+			require("nightfox").setup({
+				options = {
+					transparent = true,
+				},
 			})
 		end,
 	},
