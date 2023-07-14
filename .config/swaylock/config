@@ -2,35 +2,30 @@ ignore-empty-password
 show-failed-attempts
 indicator-caps-lock
 
+font="Hack Nerd Font"
+font-size=32
+
+text-color=fbf1c7
+
 color=333333FF
 
-font="Hack Nerd Font"
-font-size=12
+key-hl-color=4477dd
+separator-color=00000000
 
-indicator-idle-visible
-indicator-radius=200
+indicator-radius=150
 indicator-thickness=20
 
-text-color=e0def4
-text-caps-lock-color=""
-text-ver-color=e0def4
-text-clear-color=e0def4
-text-wrong-color=31748f
+inside-color=32302f
+inside-clear-color=8ec07c
+inside-wrong-color=fb4934
+inside-ver-color=83a598
 
-line-color=1f1d2e
-line-ver-color=eb6f92
-line-clear-color=1f1d2e
-line-wrong-color=1f1d2e
+line-color=32302f
+line-clear-color=8ec07c
+line-wrong-color=fb4934
+line-ver-color=83a598
 
-ring-color=191724
-ring-ver-color=eb6f92
-ring-clear-color=9ccfd8
-ring-wrong-color=31748f
-
-inside-color=1f1d2e
-inside-ver-color=1f1d2e
-inside-clear-color=1f1d2e
-inside-wrong-color=1f1d2e
-
-key-hl-color=eb6f92
-bs-hl-color=31748f
+ring-color=32302f
+ring-clear-color=8ec07c
+ring-wrong-color=fb4934 
+ring-ver-color=83a598
