@@ -1,9 +1,9 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 40, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 5, // Gaps between modules (4px)
 
     "modules-left": ["wlr/workspaces"],
     //"modules-center": ["hyprland/window"],
@@ -16,8 +16,8 @@
     },
 
     "wlr/workspaces": {
-        "on-click": "activate",
         "format": "{icon}",
+        "on-click": "activate",
         "format-icons": {
             "1": "1",
             "2": "2",
@@ -46,9 +46,23 @@
     },
 
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        //"format": "{:%H:%M:%S}",
+        //"format-alt": "{:%A - %d.%m.%Y}",
+        "format": "{:%A - %d.%m.%Y | %H:%M:%S}",
+        "locale": "en_DK.UTF-8",
+        "interval": 1,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode"          : "month",
+            "weeks-pos"     : "left",
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     },
 
     "cpu": {

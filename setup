@@ -8,7 +8,7 @@ hyprland-nvidia xdg-desktop-portal-hyprland wireplumber wl-clipboard waybar sway
 nwg-look-bin qt5ct qt6ct qt5-wayland qt6-wayland polkit-kde-agent
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-hack-nerd
 alacritty xcwd-git neofetch neovim lf
-thunar tumbler thunar-volman thunar-archive-plugin
+thunar tumbler thunar-volman thunar-archive-plugin xarchiver
 light redshift
 pulseaudio pulseaudio-alsa pavucontrol
 tlp thermald powertop
