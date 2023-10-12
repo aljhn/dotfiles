@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
 
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     //"modules-center": ["hyprland/window"],
     "modules-center": [],
     "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "clock", "tray"],
@@ -15,7 +15,7 @@
         "separate-outputs": true
     },
 
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
@@ -48,7 +48,7 @@
     "clock": {
         //"format": "{:%H:%M:%S}",
         //"format-alt": "{:%A - %d.%m.%Y}",
-        "format": "{:%A - %d.%m.%Y | %H:%M:%S}",
+        "format": "{:%A - %d.%m.%Y | %H:%M:%OS}",
         "locale": "en_DK.UTF-8",
         "interval": 1,
         "tooltip-format": "<tt>{calendar}</tt>",
