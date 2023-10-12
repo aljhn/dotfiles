@@ -156,11 +156,11 @@ label:focus {
 }
 
 #pulseaudio {
-    color: @accent4;
+    color: @accent5;
 }
 
 #pulseaudio.muted {
-    color: @accent1;
+    color: @accent4;
 }
 
 #custom-power {
@@ -176,7 +176,7 @@ label:focus {
 }
 
 #temperature {
-    color: @accent6;
+    color: @accent1;
 }
 
 #temperature.critical {
