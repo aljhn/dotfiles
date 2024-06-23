@@ -7,8 +7,8 @@
 
     "modules-left": ["hyprland/workspaces"],
     //"modules-center": ["hyprland/window"],
-    "modules-center": [],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "temperature", "clock", "tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "temperature", "tray"],
 
     "hyprland/window": {
         "max-length": 200,
@@ -33,7 +33,7 @@
     },
 
     "idle_inhibitor": {
-        "format": "{icon}  ",
+        "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": ""
