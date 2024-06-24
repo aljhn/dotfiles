@@ -3,7 +3,7 @@ networkmanager network-manager-applet
 paru bat reflector
 refind ntfs-3g intel-ucode
 mesa mesa-utils nvidia nvidia-utils envycontrol
-qimgv
+qimgv-light
 hyprland hyprpaper hypridle hyprlock hyprshot xdg-desktop-portal-hyprland 
 wl-clipboard waybar rofi-wayland gammastep udiskie
 nwg-look-bin qt5ct qt6ct qt5-wayland qt6-wayland polkit-kde-agent
