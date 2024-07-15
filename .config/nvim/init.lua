@@ -189,12 +189,12 @@ require("lazy").setup({
             mason_lspconfig.setup_handlers({
                 function(server_name)
                     lspconfig[server_name].setup({
-                        capabilities = capabilites,
+                        capabilities = capabilities,
                     })
                 end,
                 ["lua_ls"] = function()
                     lspconfig["lua_ls"].setup({
-                        capabilities = capabilites,
+                        capabilities = capabilities,
                         settings = {
                             Lua = {
                                 diagnostics = {
