@@ -172,6 +172,7 @@ require("lazy").setup({
                 ensure_installed = {
                     "lua_ls",
                     "pyright",
+                    "clangd",
                 },
             })
 
@@ -180,7 +181,8 @@ require("lazy").setup({
                     "stylua",
                     "isort",
                     "black",
-                    "pylint",
+                    "ruff",
+                    "clang-format",
                 },
             })
 
@@ -264,7 +266,7 @@ require("lazy").setup({
         config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
-                python = { "pylint" },
+                python = { "ruff" },
             }
 
             local lint_augrup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -285,6 +287,14 @@ require("lazy").setup({
             vim.o.timeoutlen = 1000
         end,
     },
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --     },
+    --     opts = {},
+    -- },
     {
         "folke/todo-comments.nvim",
         event = { "BufReadPre", "BufNewFile" },
