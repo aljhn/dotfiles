@@ -1,0 +1,5 @@
+theme = "onedark_transparent"
+
+[editor]
+line-number = "relative"
+auto-pairs = false
