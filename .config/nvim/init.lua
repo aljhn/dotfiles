@@ -110,6 +110,7 @@ require("lazy").setup({
         dependencies = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
             {
                 "L3MON4D3/LuaSnip",
                 version = "v2.*",
@@ -124,7 +125,7 @@ require("lazy").setup({
             local cmp = require("cmp")
             cmp.setup({
                 completion = {
-                    completeopt = "menu,menuone,noinsert",
+                    completeopt = "menu,menuone",
                 },
                 snippet = {
                     expand = function(args)
@@ -139,6 +140,7 @@ require("lazy").setup({
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
+                    { name = "nvim_lsp_signature_help" },
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
@@ -252,6 +254,11 @@ require("lazy").setup({
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "isort", "black" },
+            },
+            formatters = {
+                black = {
+                    prepend_args = { "--line-length=200" },
+                },
             },
             -- format_on_save = {
             --     timeout_ms = 500,

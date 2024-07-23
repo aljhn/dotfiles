@@ -3,3 +3,7 @@ theme = "onedark_transparent"
 [editor]
 line-number = "relative"
 auto-pairs = false
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
