@@ -57,16 +57,20 @@ require("lazy").setup({
                     "lua",
                     "bash",
                     "gitignore",
+                    "markdown",
+                    "toml",
+                    "yaml",
+                    "json",
                     "python",
                     "c",
                     "cpp",
-                    "haskell",
                     "cmake",
+                    "haskell",
                     "html",
                     "css",
                     "javascript",
-                    "json",
-                    "toml",
+                    "typescript",
+                    "svelte",
                 },
                 sync_install = false,
                 highlight = {
@@ -76,10 +80,9 @@ require("lazy").setup({
                 indent = {
                     enable = true,
                 },
-                autotag = {
-                    enable = true,
-                },
             })
+
+            require("nvim-ts-autotag").setup({})
         end,
     },
     {
@@ -174,6 +177,11 @@ require("lazy").setup({
                     "lua_ls",
                     "pyright",
                     "clangd",
+                    "html",
+                    "cssls",
+                    "ts_ls",
+                    "biome",
+                    "svelte",
                 },
             })
 
@@ -184,6 +192,7 @@ require("lazy").setup({
                     "black",
                     "ruff",
                     "clang-format",
+                    "prettier",
                 },
             })
 
@@ -254,10 +263,18 @@ require("lazy").setup({
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "isort", "black" },
+                javascript = { "biome" },
+                typescript = { "biome" },
+                html = { "prettier" },
+                css = { "prettier" },
+                json = { "biome" },
             },
             formatters = {
                 black = {
                     prepend_args = { "--line-length=200" },
+                },
+                prettier = {
+                    prepend_args = { "--tab-width", "4" },
                 },
             },
             -- format_on_save = {
@@ -273,6 +290,8 @@ require("lazy").setup({
             local lint = require("lint")
             lint.linters_by_ft = {
                 python = { "ruff" },
+                javascript = { "biomejs" },
+                typescript = { "biomejs" },
             }
 
             local lint_augrup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -343,6 +362,7 @@ require("lazy").setup({
             options = {
                 component_separators = "|",
                 section_separators = "",
+                theme = "auto",
             },
         },
     },

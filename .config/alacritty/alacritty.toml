@@ -41,7 +41,7 @@ style = "Italic"
 family = "Hack Nerd Font"
 style = "Regular"
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 
 [window]
@@ -50,3 +50,5 @@ opacity = 0.8
 [window.padding]
 x = 10
 y = 10
+
+[terminal]
