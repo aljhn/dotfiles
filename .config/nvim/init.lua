@@ -98,6 +98,19 @@ require("lazy").setup({
             "folke/todo-comments.nvim",
         },
         config = function()
+            require("telescope").setup({
+                defaults = {
+                    file_ignore_patterns = {
+                        "%.jpg",
+                        "%.png",
+                        "%.webp",
+                        "%.gif",
+                        "%.ico",
+                        "%.pdf",
+                    },
+                },
+            })
+
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind [G]rep" })
