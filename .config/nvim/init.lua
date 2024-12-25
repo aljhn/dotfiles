@@ -180,7 +180,6 @@ require("lazy").setup({
                     "html",
                     "cssls",
                     "ts_ls",
-                    "biome",
                     "svelte",
                 },
             })
@@ -192,6 +191,7 @@ require("lazy").setup({
                     "black",
                     "ruff",
                     "clang-format",
+                    "eslint_d",
                     "prettier",
                 },
             })
@@ -263,11 +263,11 @@ require("lazy").setup({
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "isort", "black" },
-                javascript = { "biome" },
-                typescript = { "biome" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
                 html = { "prettier" },
                 css = { "prettier" },
-                json = { "biome" },
+                json = { "prettier" },
             },
             formatters = {
                 black = {
@@ -290,8 +290,8 @@ require("lazy").setup({
             local lint = require("lint")
             lint.linters_by_ft = {
                 python = { "ruff" },
-                javascript = { "biomejs" },
-                typescript = { "biomejs" },
+                javascript = { "eslint_d" },
+                typescript = { "eslint_d" },
             }
 
             local lint_augrup = vim.api.nvim_create_augroup("lint", { clear = true })
