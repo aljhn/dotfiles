@@ -192,6 +192,7 @@ require("lazy").setup({
                     "clangd",
                     "html",
                     "cssls",
+                    "tailwindcss",
                     "ts_ls",
                     "svelte",
                 },
@@ -205,7 +206,7 @@ require("lazy").setup({
                     "ruff",
                     "clang-format",
                     "eslint_d",
-                    "prettier",
+                    "prettierd",
                 },
             })
 
@@ -276,18 +277,16 @@ require("lazy").setup({
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "isort", "black" },
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                html = { "prettier" },
-                css = { "prettier" },
-                json = { "prettier" },
+                javascript = { "prettierd" },
+                typescript = { "prettierd" },
+                html = { "prettierd" },
+                css = { "prettierd" },
+                json = { "prettierd" },
+                svelte = { "prettierd" },
             },
             formatters = {
                 black = {
                     prepend_args = { "--line-length=200" },
-                },
-                prettier = {
-                    prepend_args = { "--tab-width", "4" },
                 },
             },
             -- format_on_save = {
