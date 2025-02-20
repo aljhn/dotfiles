@@ -9,6 +9,8 @@ alias integrated="sudo envycontrol --switch integrated; reboot"
 alias hybrid="sudo envycontrol --switch hybrid; reboot"
 alias n="nvim"
 
+set -gx EDITOR nvim
+
 zoxide init fish | source
 
 fish_add_path ~/.local/bin
