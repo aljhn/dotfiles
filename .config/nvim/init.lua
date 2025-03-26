@@ -71,6 +71,7 @@ require("lazy").setup({
                     "javascript",
                     "typescript",
                     "svelte",
+                    "dockerfile"
                 },
                 sync_install = false,
                 highlight = {
