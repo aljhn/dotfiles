@@ -290,9 +290,9 @@ require("lazy").setup({
                 svelte = { "prettierd" },
             },
             formatters = {
-                black = {
-                    prepend_args = { "--line-length=200" },
-                },
+                -- black = {
+                --     prepend_args = { "--line-length=200" },
+                -- },
             },
             -- format_on_save = {
             --     timeout_ms = 500,
