@@ -71,7 +71,7 @@ require("lazy").setup({
                     "javascript",
                     "typescript",
                     "svelte",
-                    "dockerfile"
+                    "dockerfile",
                 },
                 sync_install = false,
                 highlight = {
@@ -259,6 +259,8 @@ require("lazy").setup({
                     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
                 end,
             })
+
+            vim.diagnostic.config({ virtual_text = true })
         end,
     },
     {
