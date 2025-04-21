@@ -12,6 +12,9 @@ vim.g.have_nerd_font = true
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
+vim.keymap.set( "n", "<C-u>", "<C-u>zz")
+vim.keymap.set( "n", "<C-d>", "<C-d>zz")
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
