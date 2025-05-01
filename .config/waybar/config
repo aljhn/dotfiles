@@ -49,7 +49,7 @@
         //"format": "{:%H:%M:%S}",
         //"format-alt": "{:%A - %d.%m.%Y}",
         "format": "{:%A - %d.%m.%Y | %H:%M:%OS}",
-        "locale": "en_DK.UTF-8",
+        "locale": "nb_NO.UTF-8",
         "interval": 1,
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
