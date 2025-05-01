@@ -4,7 +4,7 @@ end
 
 set fish_greeting
 
-alias l="exa -l -a --icons --color=always --group-directories-first"
+alias l="eza -l -a --icons --color=always --group-directories-first"
 alias integrated="sudo envycontrol --switch integrated; reboot"
 alias hybrid="sudo envycontrol --switch hybrid; reboot"
 alias nv="nvim"
