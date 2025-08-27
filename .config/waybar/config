@@ -1,7 +1,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 40, // Waybar height (to be removed for auto height)
+    "height": 48, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 5, // Gaps between modules (4px)
 
@@ -88,18 +88,22 @@
     },
 
     "battery": {
+        "interval": 60,
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 20,
             "critical": 10
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-warning": "{icon} {capacity}%",
+        "format-critical": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "tooltip": "{time} {icon}",
+        "format-alt": "{timeTo} / {health}",
+        "format-full": "⚡ {capacity}%",
+        "format-icons": [
+            "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+        ]
     },
 
     "pulseaudio": {
