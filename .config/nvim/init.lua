@@ -30,7 +30,13 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 vim.opt.cursorline = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -45,6 +51,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.mouse = "a"
+
+vim.opt.winborder = "rounded"
 
 require("lazy").setup({
     {
