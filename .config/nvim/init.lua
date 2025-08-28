@@ -54,11 +54,12 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
-vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, { desc = "[F]ormat File" })
 
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 
-vim.keymap.set("n", "<leader>vpu", vim.pack.update)
+vim.keymap.set("n", "<leader>vpu", vim.pack.update, { desc = "[V]im [P]ack [U]pdate" })
 
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>")
 vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>")
@@ -76,9 +77,11 @@ vim.pack.add({
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/saghen/blink.indent" },
     { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/windwp/nvim-ts-autotag" },
 })
 
 require("nvim-autopairs").setup({})
+require("nvim-ts-autotag").setup({})
 
 require("blink.indent").setup({
     static = {
@@ -107,7 +110,24 @@ require("blink.indent").setup({
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "lua",
+        "bash",
+        "gitignore",
+        "markdown",
+        "toml",
+        "yaml",
+        "json",
+        "dockerfile",
         "python",
+        "c",
+        "cpp",
+        "cmake",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "svelte",
+        "haskell",
+        "rust",
     },
     sync_install = false,
     auto_install = false,
@@ -126,7 +146,6 @@ require("kanagawa").setup({
     transparent = true,
 })
 
-
 require("lualine").setup({
     options = {
         component_separators = "|",
@@ -134,7 +153,6 @@ require("lualine").setup({
         theme = "auto",
     },
 })
-
 
 vim.api.nvim_create_autocmd("PackChanged", {
     desc = "Handle nvim-treesitter updates",
@@ -177,21 +195,29 @@ vim.lsp.config("lua_ls", {
     },
 })
 
-vim.lsp.enable({ "lua_ls" })
+vim.lsp.enable({
+    "lua_ls",
+    "ruff",
+    "ty",
+    "html",
+    "cssls",
+    "ts_ls",
+    "svelte",
+    "tailwindcss",
+})
+
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client:supports_method("textDocument/completion") then
             vim.opt.completeopt = { "menu", "menuone", "noinsert", "fuzzy", "popup" }
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+            vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
         end
     end,
 })
 
-vim.diagnostic.config({
-    virtual_text = true,
-})
+vim.diagnostic.config({ virtual_text = true })
 
 
 -- Colorscheme
