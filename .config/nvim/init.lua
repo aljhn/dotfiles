@@ -107,6 +107,7 @@ require("blink.indent").setup({
     },
 })
 
+---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "lua",
@@ -176,12 +177,21 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
             diagnostics = {
-                disable = { "missing-fields" },
+                globals = { "vim" },
+            },
+            hint = {
+                enable = true,
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
                 checkThirdParty = false,
+            },
+            telemetry = {
+                enable = false,
             },
             format = {
                 enable = true,
@@ -210,7 +220,7 @@ vim.lsp.enable({
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client:supports_method("textDocument/completion") then
+        if client ~= nil and client:supports_method("textDocument/completion") then
             vim.opt.completeopt = { "menu", "menuone", "noinsert", "fuzzy", "popup" }
             vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
         end
