@@ -23,3 +23,5 @@ function y
 	end
 	rm -f -- "$tmp"
 end
+
+starship init fish | source
