@@ -53,12 +53,11 @@ vim.opt.autowrite = false
 vim.opt.completeopt = "menu,menuone,noselect,popup"
 vim.opt.autocomplete = true
 
-
--- vim.api.nvim_create_autocmd("TextYankPost", {
---     callback = function()
---         vim.highlight.on_yank()
---     end,
--- })
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
 
 
 -- Keymaps
@@ -68,6 +67,7 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "G", "Gzz")
 
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
@@ -81,6 +81,8 @@ vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>")
 
 
 -- Plugins
+require("vim._core.ui2").enable({})
+
 vim.pack.add({
     { src = "https://github.com/rebelot/kanagawa.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -175,9 +177,13 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        vim.treesitter.start()
+    callback = function(args)
+        local filetype = args.match
+        local lang = vim.treesitter.language.get_lang(filetype)
+        if lang and vim.treesitter.language.add(lang) then
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.treesitter.start()
+        end
     end,
 })
 
@@ -189,29 +195,8 @@ require("nvim-ts-autotag").setup({})
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
-            runtime = {
-                version = "LuaJIT",
-            },
-            diagnostics = {
-                globals = { "vim" },
-            },
-            hint = {
-                enable = true,
-            },
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-            telemetry = {
-                enable = false,
-            },
-            format = {
-                enable = true,
-                defaultConfig = {
-                    quote_style = "double",
-                    table_separator_style = "comma",
-                    trailing_table_separator = "smart",
-                },
             },
         },
     },
@@ -226,23 +211,32 @@ vim.lsp.enable({
     "ts_ls",
     "svelte",
     "tailwindcss",
+    "clangd",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
     callback = function(args)
         local client_id = args.data.client_id
-        if not client_id then
-            return
-        end
-
-        local client = vim.lsp.get_client_by_id(client_id)
-        if client and client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, client_id, args.buf, {
-                autotrigger = true,
-            })
+        if client_id then
+            local client = vim.lsp.get_client_by_id(client_id)
+            if client and client:supports_method("textDocument/completion") then
+                vim.lsp.completion.enable(true, client_id, args.buf, {
+                    autotrigger = true,
+                })
+            end
         end
     end,
 })
 
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+            [vim.diagnostic.severity.INFO] = " ",
+        },
+    },
+})
