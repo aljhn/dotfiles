@@ -53,11 +53,11 @@ vim.opt.autowrite = false
 vim.opt.completeopt = "menu,menuone,noselect,popup"
 vim.opt.autocomplete = true
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+--     callback = function()
+--         vim.highlight.on_yank()
+--     end,
+-- })
 
 
 -- Keymaps
