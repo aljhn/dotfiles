@@ -50,14 +50,8 @@ vim.opt.ttimeoutlen = 0
 vim.opt.autoread = true
 vim.opt.autowrite = false
 
-vim.opt.completeopt = "menu,menuone,noselect,popup"
+vim.opt.completeopt = "menu,noinsert,fuzzy,nosort"
 vim.opt.autocomplete = true
-
--- vim.api.nvim_create_autocmd("TextYankPost", {
---     callback = function()
---         vim.highlight.on_yank()
---     end,
--- })
 
 
 -- Keymaps
@@ -101,6 +95,9 @@ require("kanagawa").setup({
     transparent = true,
 })
 vim.cmd.colorscheme("kanagawa")
+vim.api.nvim_set_hl(0, "Visual", {
+    bg = "#2d4f67",
+})
 
 require("fzf-lua").setup({})
 
@@ -198,6 +195,7 @@ vim.lsp.config("lua_ls", {
             workspace = {
                 library = vim.api.nvim_get_runtime_file("", true),
             },
+            telemetry = { enable = false },
         },
     },
 })
@@ -215,28 +213,47 @@ vim.lsp.enable({
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
     callback = function(args)
-        local client_id = args.data.client_id
-        if client_id then
-            local client = vim.lsp.get_client_by_id(client_id)
-            if client and client:supports_method("textDocument/completion") then
-                vim.lsp.completion.enable(true, client_id, args.buf, {
-                    autotrigger = true,
-                })
-            end
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client:supports_method("textDocument/completion") then
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
         end
     end,
 })
 
+vim.api.nvim_create_autocmd('LspProgress', {
+    callback = function(ev)
+        local value = ev.data.params.value
+        vim.api.nvim_echo({ { value.message or 'done' } }, false, {
+            id = 'lsp.' .. ev.data.client_id,
+            kind = 'progress',
+            source = 'vim.lsp',
+            title = value.title,
+            status = value.kind ~= 'end' and 'running' or 'success',
+            percent = value.percentage,
+        })
+    end,
+})
+
 vim.diagnostic.config({
-    virtual_text = true,
+    severity_sort = true,
+    update_in_insert = false,
+    float = {
+        border = "rounded",
+        source = "if_many",
+    },
+    underline = true,
+    virtual_text = {
+        spacing = 2,
+        source = "if_many",
+        prefix = "●",
+    },
     signs = {
         text = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.HINT] = "󰠠 ",
-            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.ERROR] = "E",
+            [vim.diagnostic.severity.WARN] = "W",
+            [vim.diagnostic.severity.INFO] = "I",
+            [vim.diagnostic.severity.HINT] = "H",
         },
     },
 })
