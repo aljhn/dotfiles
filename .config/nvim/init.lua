@@ -44,7 +44,7 @@ vim.opt.encoding = "utf-8"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
-vim.opt.updatetime = 300
+vim.opt.updatetime = 200
 vim.opt.timeoutlen = 500
 vim.opt.ttimeoutlen = 0
 vim.opt.autoread = true
@@ -72,6 +72,8 @@ vim.keymap.set("n", "<leader>vpu", vim.pack.update, { desc = "[V]im [P]ack [U]pd
 
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>")
 vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>")
+
+vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })
 
 
 -- Plugins
@@ -221,15 +223,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.api.nvim_create_autocmd('LspProgress', {
+vim.api.nvim_create_autocmd("LspProgress", {
     callback = function(ev)
         local value = ev.data.params.value
-        vim.api.nvim_echo({ { value.message or 'done' } }, false, {
-            id = 'lsp.' .. ev.data.client_id,
-            kind = 'progress',
-            source = 'vim.lsp',
+        vim.api.nvim_echo({ { value.message or "done" } }, false, {
+            id = "lsp." .. ev.data.client_id,
+            kind = "progress",
+            source = "vim.lsp",
             title = value.title,
-            status = value.kind ~= 'end' and 'running' or 'success',
+            status = value.kind ~= "end" and "running" or "success",
             percent = value.percentage,
         })
     end,
