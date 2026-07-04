@@ -81,6 +81,7 @@ require("vim._core.ui2").enable({})
 
 vim.pack.add({
     { src = "https://github.com/rebelot/kanagawa.nvim" },
+    { src = "https://github.com/EdenEast/nightfox.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
@@ -93,13 +94,20 @@ vim.pack.add({
     { src = "https://github.com/windwp/nvim-ts-autotag" },
 })
 
-require("kanagawa").setup({
-    transparent = true,
+-- require("kanagawa").setup({
+--     transparent = true,
+-- })
+-- vim.cmd.colorscheme("kanagawa")
+-- vim.api.nvim_set_hl(0, "Visual", {
+--     bg = "#2d4f67",
+-- })
+
+require("nightfox").setup({
+    options = {
+        transparent = true
+    }
 })
-vim.cmd.colorscheme("kanagawa")
-vim.api.nvim_set_hl(0, "Visual", {
-    bg = "#2d4f67",
-})
+vim.cmd.colorscheme("nordfox")
 
 require("fzf-lua").setup({})
 
@@ -223,19 +231,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.api.nvim_create_autocmd("LspProgress", {
-    callback = function(ev)
-        local value = ev.data.params.value
-        vim.api.nvim_echo({ { value.message or "done" } }, false, {
-            id = "lsp." .. ev.data.client_id,
-            kind = "progress",
-            source = "vim.lsp",
-            title = value.title,
-            status = value.kind ~= "end" and "running" or "success",
-            percent = value.percentage,
-        })
-    end,
-})
+-- vim.api.nvim_create_autocmd("LspProgress", {
+--     callback = function(ev)
+--         local value = ev.data.params.value
+--         vim.api.nvim_echo({ { value.message or "done" } }, false, {
+--             id = "lsp." .. ev.data.client_id,
+--             kind = "progress",
+--             source = "vim.lsp",
+--             title = value.title,
+--             status = value.kind ~= "end" and "running" or "success",
+--             percent = value.percentage,
+--         })
+--     end,
+-- })
 
 vim.diagnostic.config({
     severity_sort = true,
