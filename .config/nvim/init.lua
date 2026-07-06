@@ -10,6 +10,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
+vim.opt.linebreak = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
@@ -66,7 +67,7 @@ vim.keymap.set("n", "G", "Gzz")
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
-vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, { desc = "[F]ormat File" })
+vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, { desc = "[F]ormat file" })
 
 vim.keymap.set("n", "<leader>vpu", vim.pack.update, { desc = "[V]im [P]ack [U]pdate" })
 
@@ -74,6 +75,10 @@ vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>")
 vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>")
 
 vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature help" })
+
+vim.keymap.set("n", "<leader>w", function()
+    vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle text [W]rapping" })
 
 
 -- Plugins
